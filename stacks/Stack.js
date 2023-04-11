@@ -34,6 +34,6 @@ export default class stack {
 		if (this.isEmpty()) {
 			return '';
 		}
-		return this.#items;
+		return Object.values(this.#items).toString();
 	}
 }

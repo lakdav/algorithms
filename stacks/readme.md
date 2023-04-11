@@ -1,3 +1,5 @@
+# stack
+
 LIFO-the last in, first out
 
 Top - end of the stack

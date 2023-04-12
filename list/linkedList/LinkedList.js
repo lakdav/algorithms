@@ -51,21 +51,15 @@ export default class LinkedList {
 		this.count++;
 	}
 	indexOf(element) {
-		let result = -1;
-		if (this.isEmpty()) {
-			return result;
-		}
-		let index = 0;
+		console.log(element);
 		let current = this.head;
-		while (current != null) {
-			console.log(current.element);
+		for (let i = 0; i < this.count && current != null; i++) {
 			if (this.equalsFn(element, current.element)) {
-				return (result = index);
+				return i;
 			}
 			current = current.next;
-			index++;
 		}
-		return result;
+		return -1;
 	}
 	remove(element) {
 		const index = this.indexOf(element);

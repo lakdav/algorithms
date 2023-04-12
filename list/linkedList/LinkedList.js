@@ -51,7 +51,6 @@ export default class LinkedList {
 		this.count++;
 	}
 	indexOf(element) {
-		console.log(element);
 		let current = this.head;
 		for (let i = 0; i < this.count && current != null; i++) {
 			if (this.equalsFn(element, current.element)) {

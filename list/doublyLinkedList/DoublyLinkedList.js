@@ -46,8 +46,8 @@ export default class doublyLinkedList extends LinkedList {
 				this.head.prev = undefined;
 			}
 		} else if (index === this.size() - 1) {
-			current = this.tail; // {4}
-			this.tail = current.prev; // {5}
+			current = this.tail;
+			this.tail = current.prev;
 			this.tail.next = null;
 		} else {
 			current = this.getElementAt(index);

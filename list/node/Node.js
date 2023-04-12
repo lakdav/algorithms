@@ -4,3 +4,9 @@ export class Node {
 		this.next = null;
 	}
 }
+export class DoublyNode extends Node {
+	constructor(element) {
+		super(element);
+		this.prev = null;
+	}
+}

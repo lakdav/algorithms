@@ -50,6 +50,9 @@ export default class LinkedList {
 		}
 		this.count++;
 	}
+	getHead() {
+		return this.head;
+	}
 	indexOf(element) {
 		let current = this.head;
 		for (let i = 0; i < this.count && current != null; i++) {

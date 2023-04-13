@@ -16,6 +16,15 @@ export default class HashTable {
 		}
 		return hash % 37;
 	}
+	djb2HashCode(key) {
+		const tableKey = this.toStrFn(key); // {1}
+		let hash = 5381; // {2}
+		for (let i = 0; i < tableKey.length; i++) {
+			// {3}
+			hash = hash * 33 + tableKey.charCodeAt(i); // {4}
+		}
+		return hash % 1013; // {5}
+	}
 	hashCode(key) {
 		return this.loseloseHashCode(key);
 	}
@@ -45,9 +54,9 @@ export default class HashTable {
 			return '';
 		}
 		const keys = this.keys();
-		let objString = `{${keys[0]} => ${this.table[keys[0]].toString()}}`;
+		let objString = `${keys[0]} => ${this.table[keys[0]].toString()}\n`;
 		for (let i = 1; i < keys.length; i++) {
-			objString = `${objString},{${keys[i]} => ${this.table[keys[i]].toString()}}`;
+			objString += `${keys[i]} => ${this.table[keys[i]].toString()}\n`;
 		}
 		return objString;
 	}

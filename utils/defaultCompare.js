@@ -8,3 +8,6 @@ export default function defaultCompare(a, b) {
 	}
 	return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
 }
+export const reverseCompare = (compareFn) => {
+	return (a, b) => compareFn(b, a);
+};

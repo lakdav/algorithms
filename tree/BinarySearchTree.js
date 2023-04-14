@@ -1,3 +1,4 @@
+import { Compare, defaultCompare } from '../utils/index.js';
 import Node from './Node.js';
 
 export default class BinarySearchTree {
@@ -124,14 +125,4 @@ export default class BinarySearchTree {
 			return node;
 		}
 	}
-}
-const Compare = {
-	LESS_THAN: -1,
-	BIGGER_THAN: 1,
-};
-function defaultCompare(a, b) {
-	if (a === b) {
-		return 0;
-	}
-	return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN;
 }

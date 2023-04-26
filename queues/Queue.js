@@ -32,10 +32,13 @@ export default class Queue {
 		this.count = 0;
 		this.lowestCount = 0;
 	}
-	toString() {
+	toString = () => {
 		if (this.isEmpty()) {
 			return '';
 		}
 		return Object.values(this.items).toString();
+	};
+	print() {
+		console.log(this.toString());
 	}
 }

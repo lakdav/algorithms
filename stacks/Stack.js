@@ -16,6 +16,7 @@ export default class stack {
 		delete this.#items[this.#count];
 		return result;
 	}
+
 	isEmpty() {
 		return this.#count === 0;
 	}

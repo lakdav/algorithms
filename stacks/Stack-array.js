@@ -13,7 +13,7 @@ export default class StackArray {
 		return this.#items[this.#items.length - 1];
 	}
 	isEmpty() {
-		return this.#items.length === 0;
+		return this.size() === 0;
 	}
 	size() {
 		return this.#items.length;
@@ -23,5 +23,8 @@ export default class StackArray {
 	}
 	toString() {
 		return this.#items.toString();
+	}
+	print() {
+		console.log(this.toString());
 	}
 }

@@ -1,5 +1,5 @@
 import { defaultEquals } from '../utils/utils.js';
-import { Node } from '../node/Node.js';
+import { Node as linkNode } from '../node/Node.js';
 export default class LinkedList {
 	constructor(equalsFn = defaultEquals) {
 		this.count = 0;
@@ -7,12 +7,12 @@ export default class LinkedList {
 		this.equalsFn = equalsFn;
 	}
 	push(element) {
-		const node = new Node(element);
+		const node = new linkNode(element);
+		let current = this.head;
 		if (this.isEmpty()) {
 			this.head = node;
 		} else {
-			let current = this.head;
-			while (current.next != undefined) {
+			while (current.next != null) {
 				current = current.next;
 			}
 			current.next = node;
@@ -34,12 +34,11 @@ export default class LinkedList {
 		this.count--;
 		return current.element;
 	}
-	insert(element, index) {
-		const node = new Node(element);
+	insert(element, index = 0) {
 		if (this.isHead(index)) {
-			node.next = this.head;
-			this.head = node;
+			this.prepend(element);
 		} else {
+			const node = new linkNode(element);
 			const previous = this.getElementAt(index - 1);
 			if (!previous) {
 				return false;
@@ -47,7 +46,13 @@ export default class LinkedList {
 			const current = previous.next;
 			node.next = current;
 			previous.next = node;
+			this.count++;
 		}
+	}
+	prepend(element) {
+		const node = new linkNode(element);
+		node.next = this.head;
+		this.head = node;
 		this.count++;
 	}
 	getHead() {
@@ -77,6 +82,17 @@ export default class LinkedList {
 		}
 		return undefined;
 	}
+	reverse() {
+		let current = this.head;
+		let head = new linkNode(current.element);
+		while (current.next) {
+			const before = new linkNode(current.next.element);
+			before.next = head;
+			head = before;
+			current = current.next;
+		}
+		this.head = head;
+	}
 	isHead(index) {
 		return index === 0;
 	}
@@ -98,7 +114,7 @@ export default class LinkedList {
 		}
 		const arr = [];
 		let current = this.head;
-		while (current !== null) {
+		while (current != null) {
 			arr.push(current.element);
 			current = current.next;
 		}

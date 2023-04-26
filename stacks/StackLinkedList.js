@@ -13,6 +13,7 @@ export default class StackLinkedList {
 		}
 		return this.items.removeAt(this.items.size() - 1);
 	}
+
 	peek() {
 		if (this.isEmpty()) {
 			return undefined;
